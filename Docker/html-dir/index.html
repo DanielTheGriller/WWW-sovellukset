@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+	<meta charset="UTF-8">
+	<title>Viikko3_www-sovellukset</title>
+	
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+</head>
+
+<body class="cyan lighten-3">
+
+	<div class="container flow-text white-text">
+	<div class="teal lighten-2 card-panel center s12"><h1 class="">Ostoslista</h1></div>
+		<br />
+		<section class="js-instance">
+
+			<div class="form__item input-field col s12">
+				<input type="text":maxlength=20 v-model="ostos" class="form__field" id="ostos" />
+				<label for="ostos">Lisää ostos</label>
+				<button class="button waves-effect waves-light btn" v-on:click="add">Lisää</button>
+			</div>
+			<div class="container">
+				<ol class="collection white" v-if="ostoslista.length">
+					<lista-sovellus v-for="tavara in ostoslista" v-bind:tulostuslista="tavara" v-bind:key="index" class="collection-item  teal-text text-lighten-2"></lista-sovellus>
+				</ol>
+			</div>
+			<div v-if="!ostoslista.length"><br />Aloita lisäämällä ostoksia!</div>
+
+			<div v-else="!ostoslista.length">
+				<p>Syötä poistettavan tuotteen järjestysnumero</p>
+				<div class="input-field col s12">
+					<input type="number":maxlength="4" v-model="index" id="poisto"/>
+					<label for="poisto">Poistettava ostos</label>	
+					<div>
+						<button class="button waves-effect waves-light btn" v-on:click="remove(index-1)">Poista</button>
+					</div>
+
+				</div>
+					
+			</div>
+		</section>
+		
+		<script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+
+		<script  src="js/index.js"></script>
+
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+
+
+	</div>
+</body>
+
+</html>
